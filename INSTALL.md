@@ -16,7 +16,11 @@ distribution:
 4. Clear the Chrome browsing history, delete `.utop_history`, 
    and finally delete `.bash_history`.
    
-Optionally, before exporting the VM to ship to students, you can
+Before exporting the VM for other people to use, you must reconfigure
+the VM settings in VirtualBox to change serial port COM1 to Disconnected.
+Otherwise they won't be able to start the VM.
+   
+Optionally, before exporting the VM to ship to others, you can
 reduce the size of the .ova file by about 1 GB by following the
 instructions here:
 
