@@ -9,8 +9,9 @@ distribution:
    [3110]: http://www.cs.cornell.edu/Courses/cs3110/2016fa/
    [man]: http://caml.inria.fr/pub/docs/manual-ocaml/
    [cms]: http://cms.csuglab.cornell.edu/
-2. Change the desktop background to `caravan.jpg` (located in the
-   same directory as this file.)
+2. Change the desktop background to `caravan.jpg`, located 
+   [here](https://github.com/cs3110/vm/blob/master/caravan.jpg).
+   Save it in ~/Pictures for easy of installation.
 3. In the Ubuntu settings app, go to the Security & privacy pane, and
    unselect "waking from suspend" and "returning from blank screen"
 4. Clear the Chrome browsing history, delete `.utop_history`, 
@@ -25,8 +26,12 @@ reduce the size of the .ova file by about 1 GB by following the
 instructions here:
 
   http://superuser.com/questions/529149/how-to-compact-virtualboxs-vdi-file-size
+  
+The `dd` method seems to work better than the `zerofree` method.
 
 You'll need to convert between VDI and VMDK disks as described here:
 
   http://www.dedoimedo.com/computers/virtualbox-convert.html
+  
+To build the 32-bit version of the VM, just change "64" to "32" in Vagrantfile.
   
