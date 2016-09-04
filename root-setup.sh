@@ -7,7 +7,9 @@ echo "ubuntu:ubuntu" | chpasswd
 # Install packages
 apt-get update
 apt-get upgrade
-apt-get install -y ubuntu-desktop chromium-browser default-jdk pv
+apt-get install -y ubuntu-desktop chromium-browser default-jdk pv virtualbox-guest-utils virtualbox-guest-dkms
+usermod -a -G vboxsf ubuntu
+
 apt-get install -y m4 ocaml ocaml-native-compilers camlp4-extra opam 
 apt-get install -y vim vim-gtk emacs
 
