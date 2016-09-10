@@ -3,7 +3,7 @@ opam init -a -y --comp 4.03.0
 eval `opam config env`
 
 # Install packages 
-opam install -y utop ounit qcheck yojson lwt menhir
+opam install -y utop ounit qtest yojson lwt menhir ansiterminal
 
 # Configure sublime
 mkdir -p $HOME/.config/sublime-text-3/Packages/User
