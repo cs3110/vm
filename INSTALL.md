@@ -12,14 +12,11 @@ distribution:
 2. Change the desktop background to `caravan.jpg`, located 
    [here](https://github.com/cs3110/vm/blob/master/caravan.jpg).
    Save it in ~/Pictures for easy of installation.
-3. In the Ubuntu settings app, go to the Security & privacy pane, and
-   unselect "waking from suspend" and "returning from blank screen"
-4. Clear the Chrome browsing history, delete `.utop_history`, 
+3. Clear the Chrome browsing history, delete `.utop_history`, 
    and finally delete `.bash_history`.
    
-Before exporting the VM for other people to use, you must reconfigure
-the VM settings in VirtualBox to change serial port COM1 to Disconnected.
-Otherwise they won't be able to start the VM.
+Before exporting the VM for other people to use, reconfigure
+the VM settings in VirtualBox to solve any invalid configuration issues.
    
 Optionally, before exporting the VM to ship to others, you can
 reduce the size of the .ova file by about 1 GB by following the
@@ -31,7 +28,7 @@ The `dd` method seems to work better than the `zerofree` method.
 
 You'll need to convert between VDI and VMDK disks as described here:
 
-  http://www.dedoimedo.com/computers/virtualbox-convert.html
+  https://nfolamp.wordpress.com/2010/06/10/converting-vmdk-files-to-vdi-using-vboxmanage/
   
 To build the 32-bit version of the VM, just change "64" to "32" in Vagrantfile.
   
