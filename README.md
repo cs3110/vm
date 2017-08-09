@@ -13,20 +13,16 @@
         vagrant halt
         vagrant up
 
-4. Login to the VM.  The username and password are both "vagrant".
+4. Login to the VM.  The username and password are both `vagrant`.
 
-5. In Virtual Box->Devices, enable Drag and Drop and Shared Clipboard, both
+   A. In Virtual Box->Devices, enable Drag and Drop and Shared Clipboard, both
    bidirectional.
    
-6. Run the commands in `post_provision.sh`.
+   B. Inside the VM, logged in `vagrant`, run the commands in `post_provision.sh`.
 
-7. Set the Chrome home pages to [CS 3110][3110], the [OCaml manual][man], and [CMS][cms].
+   C. Set the Chrome home pages to [CS 3110][3110], the [OCaml manual][man], and [CMS][cms].
 
-[3110]: http://www.cs.cornell.edu/Courses/cs3110/2016fa/
-[man]: http://caml.inria.fr/pub/docs/manual-ocaml/
-[cms]: http://cms.csuglab.cornell.edu/
-   
-8. Clear the Chrome browsing history, delete `.utop_history`, 
+   D. Clear the Chrome browsing history, delete `.utop_history`, 
    and finally delete `.bash_history`.
    
 9. Shutdown the machine.  Double check the VM settings in VirtualBox to solve any 
@@ -36,10 +32,13 @@
 	reduce the size of the .ova file by about 1 GB by following [these
 	instructions](http://superuser.com/questions/529149/how-to-compact-virtualboxs-vdi-file-size).
   	The `dd` method seems to work better than the `zerofree` method.
-	You'll need to convert between VDI and VMDK disks as described [here]
-	(https://nfolamp.wordpress.com/2010/06/10/converting-vmdk-files-to-vdi-using-vboxmanage/).
+	You'll need to convert between VDI and VMDK disks as described 
+	[here](https://nfolamp.wordpress.com/2010/06/10/converting-vmdk-files-to-vdi-using-vboxmanage/).
 
 11. To build the 32-bit version of the VM, just change "64" to "32" in Vagrantfile.
   
 [vagrant]: http://www.vagrantup.com/downloads.html
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
+[3110]: http://www.cs.cornell.edu/Courses/cs3110/2016fa/
+[man]: http://caml.inria.fr/pub/docs/manual-ocaml/
+[cms]: http://cms.csuglab.cornell.edu/
