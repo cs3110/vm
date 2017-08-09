@@ -7,7 +7,7 @@ opam install -y utop ounit qtest yojson lwt menhir ansiterminal lambda-term merl
 opam user-setup install
 
 # Install Atom packages
-apm install language-ocaml ocaml-merlin ocaml-indent linter
+apm install language-ocaml ocaml-merlin ocaml-indent linter linter-ui-default intentions busy-signal
 
 # Configure sublime
 mkdir -p $HOME/.config/sublime-text-3/Packages/User
@@ -20,9 +20,3 @@ cat <<EOF > $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-setti
 }
 EOF
 
-# Change the launcher icons
-gsettings set com.canonical.Unity.Launcher favorites "['application://ubiquity.desktop', 'application://org.gnome.Nautilus.desktop', 'application://chromium-browser.desktop', 'application://gnome-terminal.desktop', 'application://atom.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']"
-
-# Change some locking settings that aren't necessary inside the VM
-gsettings set org.gnome.desktop.screensaver lock-enabled false
-gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend false

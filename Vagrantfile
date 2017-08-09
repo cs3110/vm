@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--vram", "16"]
   end
   
-#  config.vm.provision :shell, :path => "root-setup.sh"
-#  config.vm.provision :shell, privileged: false, :path => "user-setup.sh"
+  config.vm.provision :shell, :path => "root-setup.sh"
+  config.vm.provision :shell, privileged: false, :path => "user-setup.sh"
   
 end
