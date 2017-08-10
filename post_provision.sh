@@ -17,3 +17,25 @@ cat <<EOF >> ~/.inputrc
 "\e[B":history-search-forward
 EOF
 
+# Install Emacs packages
+cat <<'EOF' >> ~/.emacs
+;; Add MELPA support (needed to install company and tuareg)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+EOF
+
+
+## Install the packages
+emacs --eval "(progn (package-refresh-contents) (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
+
+
+cat <<'EOF' >> ~/.emacs
+;; Tell company about Merlin
+(with-eval-after-load 'company (add-to-list 'company-backends 'merlin-company-backend))
+
+;; Company anywhere
+(add-hook 'after-init-hook 'global-compnay-mode)
+EOF
+
+
