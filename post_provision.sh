@@ -27,7 +27,7 @@ EOF
 
 
 ## Install the packages
-emacs --eval "(progn (package-init) (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
+emacs --eval "(progn (package-refresh-contents) (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
 
 
 cat <<'EOF' >> ~/.emacs
