@@ -4,9 +4,6 @@ timedatectl set-timezone America/New_York
 # Install repositories.  The until loop is because the GPG server that 
 #   add-apt-repository contacts is flaky and sometimes fails to
 #   return a key.
-until add-apt-repository ppa:webupd8team/sublime-text-3 
-do sleep 3
-done
 until add-apt-repository ppa:webupd8team/atom
 do sleep 3
 done
@@ -18,7 +15,7 @@ apt-get install -y ubuntu-desktop chromium-browser default-jdk pv virtualbox-gue
 usermod -a -G vboxsf vagrant
 
 apt-get install -y m4 ocaml ocaml-native-compilers camlp4-extra opam 
-apt-get install -y vim vim-gtk emacs sublime-text-installer atom
+apt-get install -y vim vim-gtk emacs atom
 
 # Remove Libre Office to reduce VM disk size
 apt-get -y remove --purge libreoffice*
