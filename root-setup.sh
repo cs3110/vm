@@ -14,7 +14,7 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 apt-get install -y ubuntu-desktop chromium-browser default-jdk pv virtualbox-guest-utils virtualbox-guest-dkms
 usermod -a -G vboxsf vagrant
 
-apt-get install -y m4 ocaml ocaml-native-compilers camlp4-extra opam 
+apt-get install -y m4 opam 
 apt-get install -y vim vim-gtk emacs atom
 
 # Remove Libre Office to reduce VM disk size
