@@ -18,20 +18,24 @@ cat <<EOF >> ~/.inputrc
 EOF
 
 # Install Emacs packages
-echo ";; Add MELPA support (needed to install company and tuareg
-
+cat <<'EOF' >> ~/.emacs
+;; Add MELPA support (needed to install company and tuareg)
 (require 'package)
-(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\"))
-(package-init)" >> ~/.emacs
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+EOF
+
 
 ## Install the packages
-emacs --eval "(progn (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
+emacs --eval "(progn (package-init) (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
 
-echo ";; Tell company about Merlin
 
-(with-eval-after-load 'company (add-to-list 'company-backends 'merlin-company-backend))" >> ~/.emacs
+cat <<'EOF' >> ~/.emacs
+;; Tell company about Merlin
+(with-eval-after-load 'company (add-to-list 'company-backends 'merlin-company-backend))
 
-echo ";; Company anywhere
+;; Company anywhere
+(add-hook 'after-init-hook 'global-compnay-mode)
+EOF
 
-(with-eval-after-load 'company (add-hook 'tuareg-mode-hook 'company-mode))
-(with-eval-after-load 'company (add-hook 'caml-mode-hook 'company-mode))" >> ~/.emacs
+
