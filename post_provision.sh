@@ -1,5 +1,5 @@
 # Change the launcher icons
-gsettings set com.canonical.Unity.Launcher favorites "['application://ubiquity.desktop', 'application://org.gnome.Nautilus.desktop', 'application://chromium-browser.desktop', 'application://gnome-terminal.desktop', 'application://atom.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']"
+gsettings set com.canonical.Unity.Launcher favorites "['application://ubiquity.desktop', 'application://org.gnome.Nautilus.desktop', 'application://chromium-browser.desktop', 'application://gnome-terminal.desktop', 'application://atom.desktop', 'application://sublime-text.desktop', 'application://komodo-edit-10.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']"
 
 # Change some locking settings
 gsettings set org.gnome.desktop.screensaver lock-enabled false
@@ -25,10 +25,7 @@ cat <<'EOF' >> ~/.emacs
 (package-initialize)
 EOF
 
-
-## Install the packages
 emacs --eval "(progn (package-refresh-contents) (package-install 'tuareg) (package-install 'company) (package-install 'company-try-hard))"
-
 
 cat <<'EOF' >> ~/.emacs
 ;; Tell company about Merlin
@@ -38,4 +35,4 @@ cat <<'EOF' >> ~/.emacs
 (add-hook 'after-init-hook 'global-company-mode)
 EOF
 
-
+# End Emacs package installation
