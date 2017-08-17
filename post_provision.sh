@@ -35,7 +35,7 @@ cat <<'EOF' >> ~/.emacs
 (with-eval-after-load 'company (add-to-list 'company-backends 'merlin-company-backend))
 
 ;; Company anywhere
-(add-hook 'after-init-hook 'global-compnay-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 EOF
 
 
