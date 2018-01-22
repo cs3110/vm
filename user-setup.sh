@@ -1,9 +1,9 @@
 # Install OPAM
-opam init -a -y --comp 4.05.0
+opam init -a -y --comp 4.06.0
 eval `opam config env`
 
 # Install OPAM packages
-opam install -y utop ounit qtest yojson lwt menhir ansiterminal lambda-term merlin ocp-indent user-setup
+opam install -y utop ounit qtest yojson lwt menhir ansiterminal lambda-term merlin ocp-indent user-setup coq coqide
 opam user-setup install
 
 # Install Atom packages
