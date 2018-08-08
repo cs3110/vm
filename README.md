@@ -1,48 +1,59 @@
-# Vagrant install scripts for the 3110 VM
+# The CS 3110 VM
+
+Here's how to create the 3110 VM for a given semester.
 
 1. Download and install [vagrant][] and [VirtualBox][].
 
-2. Download and install the 3110 virtual machine.
+2. Clone this repo.  Update `Vagrantfile` to at least change
+   the semester.  Update `root-setup.sh` and `user-setup.sh`
+   as desired; you'll at least want to update the OCaml
+   switch specified in the latter.  Then run:
 
-        git clone https://github.com/cs3110/vm.git
-        cd vm
         vagrant up
+        
+   That will take a long time (maybe an hour) to complete.
+   When it's done, reboot the VM.
+   
+   		vagrant halt
+   		vagrant up
 
-3. Reboot the VM to start the GUI.
+3. Login to the VM.  The username and password are both `vagrant`.
 
-        vagrant halt
-        vagrant up
+   A. In the Virtual Box host, click on Devices->Insert Guest Additions CD image.
+   Click "Run" on the dialog box that appears, then type the password. When
+   installation is finished, right click on the CD on the Ubuntu desktop
+   and eject it.  Reboot the VM.   
 
-4. Login to the VM.  The username and password are both `vagrant`.
-
-   A. In Virtual Box->Devices, enable Drag and Drop and Shared Clipboard, both
+   B. In Virtual Box->Devices, enable Drag and Drop and Shared Clipboard, both
    bidirectional.
 
-   B. Inside the VM, logged in as `vagrant`, run the commands in `post_provision.sh`.
+   C. From the Ubuntu terminal, run `bash post_provision.sh`.
+   
+   D. Launch VS Code once to get its annoying initial one-time launch of Firefox out of 
+   the way.  Make sure not to leave any files open when you quit it, otherwise
+   those files will be opened on the distributed VM when Code is launched.
+   
+   E. Set the Chrome home page to [CS 3110][3110] and make Chrome the default browser.
 
-   C. Install Komodo Edit manually by following the instructions on Active
-   State's website.  (Unfortunately, there is no current PPA available to
-   do this through apt.)
-
-   C. Set the Chrome home pages to [CS 3110][3110], the [OCaml manual][man], and [CMS][cms].
-
-   D. Clear the Chrome browsing history, delete `.utop_history`,
+   F. Clear the Chrome browsing history, delete `.utop_history`, `post_provision.sh`,
    and finally delete `.bash_history`.
+   
+   G. Resize the window so that it's fairly small, otherwise when students bring it
+   up on their own small monitor it might not fit.  The size of the VirtualBox
+   boot window is good.
 
-5. Shutdown the machine.  Double check the VM settings in VirtualBox to solve any
-   invalid configuration issues.
+4. Shutdown the machine.  Double check the VM settings in VirtualBox to solve any
+   invalid configuration issues.  Delete any shared folders.  Then export the appliance.
 
-6. Optionally, before exporting the VM to ship to others, you can
+5. Optionally, before exporting the VM to ship to others, you can
 	reduce the size of the .ova file by about 1 GB by following [these
 	instructions](http://superuser.com/questions/529149/how-to-compact-virtualboxs-vdi-file-size).
   	The `dd` method seems to work better than the `zerofree` method.
 	You'll need to convert between VDI and VMDK disks as described
 	[here](https://nfolamp.wordpress.com/2010/06/10/converting-vmdk-files-to-vdi-using-vboxmanage/).
 
-7. To build the 32-bit version of the VM, just change "64" to "32" in Vagrantfile.
-
 [vagrant]: http://www.vagrantup.com/downloads.html
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
-[3110]: http://www.cs.cornell.edu/Courses/cs3110/2016fa/
+[3110]: http://cs3110.org
 [man]: http://caml.inria.fr/pub/docs/manual-ocaml/
 [cms]: http://cms.csuglab.cornell.edu/
