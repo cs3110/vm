@@ -20,4 +20,4 @@ EOF
 
 # Install VS Code extensions
 code --install-extension freebroccolo.reasonml
-code --install-extension siegebell.vscoq
+

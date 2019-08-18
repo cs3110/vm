@@ -21,8 +21,7 @@ Here's how to create the 3110 VM for a given semester.
 
    A. In the Virtual Box host, click on Devices->Insert Guest Additions CD image.
    Click "Run" on the dialog box that appears, then type the password. When
-   installation is finished, right click on the CD on the Ubuntu desktop
-   and eject it.  Reboot the VM.   
+   installation is finished, eject the CD.  Reboot the VM.   
 
    B. In Virtual Box->Devices, enable Drag and Drop and Shared Clipboard, both
    bidirectional.
