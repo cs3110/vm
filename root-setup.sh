@@ -2,8 +2,9 @@
 timedatectl set-timezone America/New_York
 
 # Install packages
+export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
-DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
+apt-get -y upgrade # -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 apt-get install -y ubuntu-desktop chromium-browser default-jdk pv linux-headers-$(uname -r) m4 build-essential dkms pkg-config libgtksourceview2.0-dev gnuplot vim vim-gtk emacs opam
 usermod -a -G vboxsf vagrant
 
