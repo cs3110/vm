@@ -28,28 +28,24 @@ Here's how to create the 3110 VM for a given semester.
 
    C. From the Ubuntu terminal, run `bash post_provision.sh`.
    
-   D. Launch VS Code once to get its annoying initial one-time launch of Firefox out of 
-   the way.  Make sure not to leave any files open when you quit it, otherwise
-   those files will be opened on the distributed VM when Code is launched.
+   D. Launch VS Code once to test Merlin.  Make sure not to leave any files
+   open when you quit it, otherwise those files will be opened on the
+   distributed VM when Code is launched.
    
    E. Set the Chrome home page to [CS 3110][3110] and make Chrome the default browser.
 
    F. Clear the Chrome browsing history, delete `.utop_history`, `post_provision.sh`,
    and finally delete `.bash_history`.
    
-   G. Resize the window so that it's fairly small, otherwise when students bring it
-   up on their own small monitor it might not fit.  The size of the VirtualBox
-   boot window is good.
+   G. If you've resized the window, resize it back so that it's fairly small,
+   otherwise when students bring it up on their own small monitor it might not
+   fit.  The size of the VirtualBox boot window is good.
 
-4. Shutdown the machine.  Double check the VM settings in VirtualBox to solve any
-   invalid configuration issues.  Delete any shared folders.  Then export the appliance.
-
-5. Optionally, before exporting the VM to ship to others, you can
-	reduce the size of the .ova file by about 1 GB by following [these
-	instructions](http://superuser.com/questions/529149/how-to-compact-virtualboxs-vdi-file-size).
-  	The `dd` method seems to work better than the `zerofree` method.
-	You'll need to convert between VDI and VMDK disks as described
-	[here](https://nfolamp.wordpress.com/2010/06/10/converting-vmdk-files-to-vdi-using-vboxmanage/).
+4. Shutdown the machine. Double check the VM settings in VirtualBox to solve any
+   invalid configuration issues. Make the display scale factor 100%, if you've
+   changed it (for example, if you're on a Retina display). Delete any shared
+   folders, which might have been created automatically. Then export the
+   appliance.
 
 [vagrant]: http://www.vagrantup.com/downloads.html
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
