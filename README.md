@@ -1,29 +1,29 @@
-# The CS 3110 VM: Lubuntu Variant
+# The CS 3110 VM: No-Vagrant Variant
 
-1. Download and install [VirtualBox][] and [lubuntu][]. 
-   - Create a new VM in VirtualBox and install Lubuntu.
+1. Download and install [VirtualBox][] and [Ubuntu 20.04 Desktop][ubuntu]. 
+   - Create a new VM in VirtualBox and install Ubuntu. Choose the minimal
+     install (i.e., fewer apps).
    - Use 1024 MB RAM, 1 CPU, 16 MB video RAM, and VMSVGA graphics controller,
      and a 64 GB dynamically-sized hard drive. We deliberately keep the
      fixed hardware requirements minimal for students who have lower-end
      hardware. But the drive needs to have room to grow for projects later
      in the semester.
-   - Make the username and password both "camel", and the full name "OCaml
-     Programmer".
-   - After first boot, let lubuntu do a full upgrade.
+   - Make the machine name "cs3110vm", the username and password both "camel",
+     and the full name "OCaml Programmer". Log in automatically.
 
-2. Open QTerminal. Add it to the quick launcher by dragging from the start menu
-   to the launcher. Run
+2. Open Terminal. Right-click and add it to favorites. Run
    ```
    sudo apt update
    sudo apt upgrade
-   sudo apt install virtualbox-guest-utils
+   sudo apt install build-essential dkms linux-headers-$(uname -r) \
+     virtualbox-guest-utils virtualbox-guest-dkms virtualbox-guest-x11
    ```
    Then reboot.  Enable Shared Clipboard->Bidirectional.
    
 3. To install OPAM, run
    ```
    sudo apt install pkg-config opam
-   opam init -y --bare
+   opam init --bare
    opam switch create cs3110-2020fa ocaml-base-compiler.4.10.0
    eval $(opam env)
    opam install -y utop ounit qtest yojson csv lwt lwt_ppx menhir \
@@ -31,7 +31,7 @@
      bisect_ppx-ocamlbuild graphics
    opam user-setup install
    ```
-   Reboot (or logout) to get the `.profile` changes working in all new shells.
+   Logout (or reboot) to get the `.profile` changes working in all new shells.
 
 4. To install VS Code, run
    ```
@@ -41,32 +41,32 @@
    sudo apt update
    sudo apt install code   
    ```
-   Add VS Code to the quick launcher. Launch it. Disable the welcome screen.
-   Copy `vsc_settings.json` into user settings. Install the "OCaml and Reason
-   IDE" extension. Create a `~/3110` folder and test that OCaml language support
-   is working. Make sure not to leave any files or folders open when you close
-   it, otherwise they will be opened in the distributed VM.
+   Add VS Code to favorites. Launch it. Disable the welcome screen. Copy
+   `vsc_settings.json` into user settings. Install the "OCaml and Reason IDE"
+   extension. Create a `~/3110` folder and test that OCaml language support is
+   working. Make sure not to leave any files or folders open when you close it,
+   otherwise they will be opened in the distributed VM.
 
-5. Download the free caravan wallpaper.
+5. Download the (free) caravan wallpaper.
    ```
    cd ~/Pictures
-   wget https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-12.jpg ~/Pictures
+   wget https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-12.jpg
    ```
-   Set it as the desktop background. Zoom the image to fill the screen.
+   Set it as the desktop background.
 
 6. Delete `.utop_history` and finally delete `.bash_history`.
 
 7. If you've resized the window, resize it back so that it's fairly small,
    otherwise when students bring it up on their own small monitor it might not
-   fit.  The size of the VirtualBox boot window is good.
+   fit. The size of the VirtualBox boot window is good.
 
 8. Shutdown the machine. Double check the VM settings in VirtualBox to solve any
    invalid configuration issues. Make the display scale factor 100%, if you've
    changed it (for example, if you're on a Retina display). Delete any shared
    folders, which might have been created automatically. Then export the
-   appliance. Set its name to "CS 3110 Fall 2020 VM".
+   appliance. Set its name to "cs3110-2020fa-ubuntu".
 
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
-[lubuntu]: https://lubuntu.me/downloads/
+[ubuntu]: https://releases.ubuntu.com/20.04/
 [caravan]: https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-12.jpg
 
