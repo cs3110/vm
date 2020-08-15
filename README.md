@@ -54,16 +54,19 @@
    ```
    Set it as the desktop background.
 
-6. Delete `.utop_history` and finally delete `.bash_history`.
+6. Run `usermod -a -G vboxsf camel` to give the account access to shared 
+   folders. Create a shared folder to test they are working, then delete it
+   and any others that might exist.
 
-7. If you've resized the window, resize it back so that it's fairly small,
+7. Delete `.utop_history` and finally delete `.bash_history`.
+
+8. If you've resized the window, resize it back so that it's fairly small,
    otherwise when students bring it up on their own small monitor it might not
    fit. The size of the VirtualBox boot window is good.
 
-8. Shutdown the machine. Double check the VM settings in VirtualBox to solve any
+9. Shutdown the machine. Double check the VM settings in VirtualBox to solve any
    invalid configuration issues. Make the display scale factor 100%, if you've
-   changed it (for example, if you're on a Retina display). Delete any shared
-   folders, which might have been created automatically. Then export the
+   changed it (for example, if you're on a Retina display). Then export the
    appliance. Set its name to "cs3110-2020fa-ubuntu".
 
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
