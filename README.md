@@ -17,7 +17,7 @@
    sudo apt upgrade
    sudo apt install build-essential dkms linux-headers-$(uname -r) \
      virtualbox-guest-utils virtualbox-guest-dkms virtualbox-guest-x11 \
-     vim emacs gnuplot
+     vim emacs gnuplot rlwrap
    ```
    Then reboot.  Enable Shared Clipboard->Bidirectional.
    
