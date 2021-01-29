@@ -3,12 +3,12 @@
 1. Download and install [VirtualBox][], and download
    [Ubuntu 20.04 Desktop][ubuntu].
 
-   - Create a new VM in VirtualBox. Name it `cs3110vm-2021sp`. For the OS,
-     choose Linux/Ubuntu 64 bit. Use 1024 MB RAM, and a 64 GB dynamically-sized
-     hard drive. Keep the default 1 CPU, 16 MB video RAM, and VMSVGA graphics
-     controller, We deliberately keep the hardware requirements minimal for
-     students who have lower-end hardware. But the drive needs to have room to
-     grow for projects later in the semester.
+   - Create a new VM in VirtualBox. Name it `cs3110vm-2021sp-ubuntu`. For the
+     OS, choose Linux/Ubuntu 64 bit. Use 1024 MB RAM, and a 64 GB
+     dynamically-sized hard drive. Keep the default 1 CPU, 16 MB video RAM, and
+     VMSVGA graphics controller, We deliberately keep the hardware requirements
+     minimal for students who have lower-end hardware. But the drive needs to
+     have room to grow for projects later in the semester.
 
    - Install Ubuntu. Choose the minimal install (i.e., fewer apps). Make the
      machine name "cs3110vm", the username and password both "camel", and the
@@ -36,7 +36,7 @@
 3. To install OPAM, run
    ```
    sudo apt install pkg-config opam
-   opam init --bare
+   opam init -y --bare
    opam switch create cs3110-2021sp ocaml-base-compiler.4.11.1
    eval $(opam env)
    opam install -y utop ounit qcheck ocaml-lsp-server ocamlformat \
@@ -78,6 +78,16 @@
    especially if you have a Retina display. Then export the appliance. Set its
    name to "cs3110-2021sp-ubuntu".
 
+10. Optionally, repeat all the above to create a Lubuntu flavor of the VM for
+    those students who have lower-powered hardware or want a more Windows-like
+    UI. Download from [here][lubuntu]. As of Jan 2021, installing the guest
+    additions through Apt did not work: it produced lots of error notifications
+    after rebooting. Instead, I had to install using Virtual Box's "Insert Guest
+    Additions CD". And, the OCaml Platform extension slowed down VS Code so much
+    that it was unusable. So I didn't ship Lubuntu for Spring 2021. That can be
+    revisited in a future semester.
+
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
 [ubuntu]: https://releases.ubuntu.com/20.04/
+[lubuntu]: https://lubuntu.me/downloads/
 [vsc]: https://code.visualstudio.com/docs/setup/linux
