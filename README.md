@@ -3,8 +3,8 @@
 1. Download and install [VirtualBox][], and download
    [Ubuntu 20.04 Desktop][ubuntu].
 
-   - Create a new VM in VirtualBox. Name it `cs3110vm-2021fa-ubuntu`, replacing
-     `2021fa` with the current semester. For the OS, choose Linux/Ubuntu 64 bit.
+   - Create a new VM in VirtualBox. Name it `cs3110vm-2022fa-ubuntu`, replacing
+     `2022fa` with the current semester. For the OS, choose Linux/Ubuntu 64 bit.
      Use 1024 MB RAM, and a 64 GB dynamically-sized hard drive. Keep the default
      1 CPU, 16 MB video RAM, and VMSVGA graphics controller. We deliberately
      keep the hardware requirements minimal for students who have lower-end
@@ -62,8 +62,8 @@
 6. Run `sudo usermod -a -G vboxsf camel` to give the account access to shared
    folders. Create a shared folder to test they are working, then delete it and
    any others that might exist. The instructions to create shared folders are in
-   the Canvas OCaml installation module. Note that shutting down the VM really
-   does seem to be necessary when modifying these settings.
+   the textbook appendix. Note that shutting down the VM really does seem to be
+   necessary when modifying these settings.
 
 7. Delete `.utop-history` and finally delete `.bash_history`.
 
