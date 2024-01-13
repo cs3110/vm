@@ -1,5 +1,12 @@
 # The CS 3110 VM
 
+You can download the CS 3110 VM from [Cornell Box][3110vm]. Installation and
+usage instructions can be found in the [3110 textbook][op-vm]. Here is how we
+created the VM:
+
+[3110vm]: https://cornell.box.com/v/cs3110-2024sp
+[op-vm]: https://cs3110.github.io/textbook/chapters/appendix/vm.html
+
 1. Download and install [VirtualBox][], and download
    [Ubuntu 22.04 Desktop][ubuntu].
 
