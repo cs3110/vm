@@ -1,90 +1,59 @@
 # The CS 3110 VM
 
-You can download the CS 3110 VM from [Cornell Box][3110vm]. Installation and
-usage instructions can be found in the [3110 textbook][op-vm]. Here is how we
-created the VM:
+You can download the CS 3110 VM from Cornell Box. It comes in two flavors: [ARM][arm-vm] for Macs with Apple Silicon, and [AMD64][amd64-vm] for PCs and Macs with Intel chips. Both are based on Ubuntu 24.04 LTS. Basing it on an LTS means we have to update it only every two years. Installation and usage instructions can be found in the [3110 textbook][op-vm]. Here is how we created the VM.
 
-[3110vm]: https://cornell.box.com/v/cs3110vm-2024sp
+[arm-vm]: https://cornell.box.com/v/cs3110vm-20.04-arm
+[amd64-vm]: https://cornell.box.com/v/cs3110vm-20.04-amd64
 [op-vm]: https://cs3110.github.io/textbook/chapters/appendix/vm.html
 
-1. Download and install [VirtualBox][], and download
-   [Ubuntu 22.04 Desktop][ubuntu].
+## The ARM Version
 
-   - Create a new VM in VirtualBox. Name it `cs3110vm-2024sp-ubuntu`, replacing
-     `2024sp` with the current semester. Skip the unattended install. Use 2048
-     MB RAM, 1 CPU, and a 64 GB dynamically-sized hard drive. We deliberately
-     keep the hardware requirements minimal for students who have lower-end
-     hardware. But the drive needs to have room to grow for projects later in
-     the semester.
+1. Install VMware Fusion Pro on your Mac.
+2. Download the Ubuntu 24.04 ARM Server. (As of 8/24 there was no ARM Desktop ISO.)
+3. Create a new VM in Fusion using the Server ISO. Customize the settings. Name the VM "cs3110vm-24.04-arm". Increase the disk space to 64 GB. Start the VM.
 
-   - Install Ubuntu. Choose the minimal install (i.e., fewer apps). Choose to
-     download updates during the install. Make your name "OCaml Programmer",
-     the computer name "cs3110vm", and the username and password both "camel",
-     and choose "log in automatically".
+Continue below under the heading "Configuring the VM".
 
-   - After installation and rebooting, you'll be asked to enable a bunch of
-     features such as online accounts, Ubuntu Pro, and developer error
-     reporting. Don't enable them, since students should make those choices
-     themselves.
+## The AMD64 Version
 
-   - Soon after rebooting, Software Updater will want to install updates. Let
-     it. Then reboot again.
+1. Install VMware Workstation Pro on your PC.
+2. Download the Ubuntu 24.04 AMD64 Server. (As of 8/24 there was an AMD64 Desktop ISO but it always hung during installation for me.)
+3. Create a new VM in Workstation using the Server ISO. Use a custom installation. Change the disk size to 64 GB. Name the VM "cs3110vm-24.04-amd64".
 
-2. Open Terminal. Right-click and add it to favorites. Run
-   ```
-   sudo apt update
-   sudo apt upgrade
-   sudo apt install build-essential linux-headers-$(uname -r) vim emacs
-   ```
+## Configuring the VM
 
-3. In VirtualBox, go to Devices -> "Insert Guest Editions CD Image". Then in Terminal run
-   ```
-   sudo /media/camel/VBox_GAs_7.0.12/VBoxLinuxAdditions.run
-   ```
-   Reboot the virtual machine. Eject the CD image. Enable Devices->Shared Clipboard->Bidirectional.
-
-3. To install and initialize OPAM, run
-   ```
-   sudo apt install pkg-config opam
-   opam init --bare -a -y
-   ```
-   Then follow the install instructions in the [CS 3110 textbook][op] to create
-   an OPAM switch and install required packages for the current semester. Logout (or
-   reboot) to get the `.profile` changes working in all new shells.
-
-4. Use the Ubuntu Software installer to install Visual Studio Code. (Update any other software it wants to at the same time.) Then launch
-   VSC and add it to favorites. Copy-paste `vsc_settings.json` into user
-   settings. Install the "OCaml Platform" extension. Create a `~/3110` folder
-   and test that OCaml language support is working. Make sure not to leave any
-   files or folders open when you close it, otherwise they will be opened in the
-   distributed VM.
-
-5. Download the (free) caravan wallpaper.
+4. Follow the prompts to configure the machine. Name it either "cs3110vm-24.04-arm" or "cs3110vm-24.04-amd64" as appropriate. Install the full server package intended for human login. Make your name "OCaml Programmer", the computer name "cs3110vm", and the username and password both "camel". Don't enable Ubuntu Pro. Don't install OpenSSH server. Don't install any additional server snaps.   
+5. Remove the CD ISO then reboot. Login. Do a `sudo apt update` and `sudo apt upgrade` and `sudo shutdown -r now`.
+6. Do `sudo apt install ubuntu-desktop` and `sudo shutdown -r now`. It seems to take two minutes for "networkd" to launch.
+7. After the reboot, do `sudo apt install build-essential linux-headers-$(uname -r) vim emacs`. No configuration for Postfix mail.
+8. Then do `sudo apt install pkg-config opam`. Do `opam init` and let it create a default switch. Install the OPAM packages currently recommended in the textbook.
+9.  Uninstall libreoffice with `sudo apt purge libreoffice*`, then `sudo apt autoremove`, then `sudo apt autoclean`.
+10. Install VS Code following Microsoft's current instructions. The Deb package download works, even though there's a permission denied warning at the end. Install OCaml Platform extension. Install the recommended VS Code settings from the textbook. Test that language integration works. Close any open folders and remove any test files.
+11. Pin Terminal and Code to the dash. Unpin unneeded apps.
+12. Go to Ubuntu Settings -> Users and enable automatic login.
+13. Go to Ubuntu Settings -> Privacy and Security and disable screen blank and automatic screen lock.
+14. 14. Download the (free) caravan wallpaper.
    ```
    cd ~/Pictures
    wget https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-12.jpg
    ```
-   Set it as the desktop background. It is also cached locally here in this repo
-   at `caravan.jpg`.
+   Set it as the desktop background. It is also cached locally here in this repo at `caravan.jpg`.
+15. Delete `.utop-history` and finally delete `.bash_history`.
+16. Shutdown the machine.
+   
+## Export the VM
 
-6. Run `sudo usermod -a -G vboxsf camel` to give the account access to shared
-   folders. Create a shared folder to test they are working, then delete it and
-   any others that might exist. The instructions to create shared folders are in
-   the textbook appendix. Note that shutting down the VM really does seem to be
-   necessary when modifying these settings.
+On VMware Fusion:
 
-7. Delete `.utop-history` and finally delete `.bash_history`.
+```console
+$ /Applications/VMware\ Fusion.app/Contents/Library/VMware\ OVF\ Tool/ovftool --acceptAllEulas pathToVM/nameOfVM.vmwarevm/nameOfVM.vmx destinationPath/nameOfVM.ova
+```
 
-8. If you've resized the window, resize it back so that it's fairly small,
-   otherwise when students bring it up on their own small monitor it might not
-   fit. The size of the VirtualBox boot window is good.
+On VMware Workstation:
 
-9. Shutdown the machine. Double check the VM settings in VirtualBox to solve any
-   invalid configuration issues. Make sure the display scale factor is 100%,
-   especially if you have a Retina display.
+- File -> Export to OVF
+- Choose the destination path and name. Manually add ".ova" extension to the name.
 
-10. Export the appliance.
+## Upload the VM
 
-[VirtualBox]: https://www.virtualbox.org/wiki/Downloads
-[ubuntu]: https://releases.ubuntu.com/22.04/
-[op]: https://cs3110.github.io/textbook/
+Put it in Box and configure a custom URL for it.
